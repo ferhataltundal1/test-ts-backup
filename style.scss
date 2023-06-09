@@ -1,0 +1,81 @@
+@import url("https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;500&display=swap");
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  outline: none;
+  border: none;
+  text-decoration: none;
+}
+
+html {
+  width: 100%;
+  height: 100%;
+  direction: ltr;
+  scroll-behavior: smooth;
+}
+body {
+  font-family: "Open Sans", sans-serif;
+  width: 100%;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  background-color: #3a3a3a;
+}
+.container {
+  max-width: 500px;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+input {
+  max-width: 300px;
+  width: 100%;
+  height: 40px;
+  outline: none;
+  border: 1px solid #fff;
+  padding: 0.2rem 1.5rem;
+  font-size: 18px;
+  color: #000;
+  border-radius: 10px;
+  margin: 10px;
+}
+h1 {
+  color: #fff;
+  padding: 1rem;
+}
+.button {
+  width: 100%;
+  max-width: 300px;
+  width: 100%;
+  height: 40px;
+  background-color: #0f69bd;
+  outline: none;
+  border: none;
+  border-radius: 10px;
+  color: #fff;
+  margin: 10px;
+}
+
+.header {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0.5rem 1rem;
+}
+.header button {
+  max-width: 100px;
+  width: 100%;
+  border-radius: 5px;
+  height: 35px;
+  background-color: #fff;
+  outline: none;
+  border: none;
+  cursor: pointer;
+}
