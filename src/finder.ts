@@ -1,4 +1,12 @@
-export default function finder<T>(
+type DeeperType<T = unknown> = {
+  data: T;
+  info?: {
+    message: string;
+    result: boolean;
+  };
+};
+
+export default function deeper<T>(
   array: T[],
   key: string | number,
   search: string | number,
@@ -7,7 +15,7 @@ export default function finder<T>(
     successful?: string;
     unsuccessful?: string;
   }
-): any[] {
+): DeeperType<T>[] {
   let result: boolean = false;
   let message: string = "";
   function searchValue(value: any[typeof key]): boolean {
@@ -24,30 +32,30 @@ export default function finder<T>(
       return result;
     }
   }
-  const data = array.find(searchValue) || [];
-  return [{ ...data, info: { message, result } }];
+  return [
+    {
+      ...{ data: (array.find(searchValue) as T[]) || [] },
+      ...{ info: { message, result } },
+    },
+  ] as DeeperType<T>[];
 }
 
-type Users = {
-  id: number;
-  name: string;
-};
-const dummyValue: Users[] = [
+const dummyValue = [
   {
     id: 1,
     name: "Ferhat",
   },
   {
     id: 2,
-    name: "Ali",
+    name: "John",
   },
   {
     id: 3,
-    name: "Veli",
+    name: "Miller",
   },
 ];
 
-const result: Users[] = finder(dummyValue, "id", 2, true, {
+const result = deeper(dummyValue, "id", 2, true, {
   successful: "User exist!",
   unsuccessful: "User not found!",
 });

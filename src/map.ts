@@ -21,7 +21,7 @@ export function deleteMap<U>(map: Map<typeof key, any>, key: U | U[]): any {
   return map.delete(key);
 }
 
-const datas: any = {
+const datas = {
   name: "1_TEST",
   surname: "2_TEST",
 };

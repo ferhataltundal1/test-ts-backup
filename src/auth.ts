@@ -56,7 +56,7 @@ logout.addEventListener("click", () => {
   window.location.reload();
 });
 
-body.onload = () => {
+window.onload = () => {
   if (usernameSession && passwordSession) {
     loginContainer.style.display = "none";
     logout.style.display = "block";

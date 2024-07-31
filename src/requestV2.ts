@@ -1,13 +1,3 @@
-/*function listen(ms: number, run: () => void): Promise<string> {
-  return new Promise(() => {
-    const interval = setInterval(() => run(), ms);
-    return () => clearInterval(interval);
-  });
-}
-listen(1000, () => {
-  console.log("Test");
-}).catch(console.log);
-*/
 type ServerReturnType<T> = {
   isLoaded: boolean;
   isError: boolean;
@@ -107,3 +97,59 @@ async function requestToServerRaw<T>(
   }
   return results;
 }
+
+async function requestToServerFull<T>(
+  input: RequestInfo | URL,
+  queries: {
+    key: string;
+    data: unknown;
+  }[],
+  init?: RequestInit | undefined
+): Promise<{ [key: string]: ServerReturnType<T> }> {
+  const results: { [key: string]: ServerReturnType<T> } = {};
+  for (let i = 0; i < queries.length; i++) {
+    const response = await startServer<T>(`${input}/${queries[i].data}`, init);
+    results[queries[i].key] = { ...response } as ServerReturnType<T>;
+  }
+  return results;
+}
+
+const API_URL = "https://jsonplaceholder.typicode.com";
+
+interface AllDataType {
+  data_1: {
+    body: string;
+    id: number;
+    title: string;
+    userId: number;
+  }[];
+  data_2: {
+    completed: boolean;
+    id: number;
+    title: string;
+    userId: number;
+  }[];
+  data_3: {
+    body: string;
+    email: string;
+    id: number;
+    name: string;
+    postId: number;
+  }[];
+}
+
+const request = requestToServerFull<AllDataType>(API_URL, [
+  {
+    key: "data_2",
+    data: "todos",
+  },
+  {
+    key: "data_3",
+    data: "comments",
+  },
+  {
+    key: "data_1",
+    data: "posts",
+  },
+]);
+request.then((response) => console.log(response));

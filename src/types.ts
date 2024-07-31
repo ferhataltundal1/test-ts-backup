@@ -28,7 +28,6 @@ export type UserTypes = {
   password: string;
 };
 
-
 //@ts-ignore
 import allUsers from "./user.json" assert { type: "json" };
 

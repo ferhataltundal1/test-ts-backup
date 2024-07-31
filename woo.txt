@@ -1,0 +1,49 @@
+const now = new Date().toISOString();
+console.log(now);
+/*
+
+JavaScript'te tarih ve saat işlemleri için kullanılan temel yapı, Date nesnesidir. Bu nesne ile tarayıcınızda veya sunucu taraflı javaScript uygulamalarınızda tarih ve saat bilgilerini manipüle edebilirsiniz.
+
+Bu fonksiyonları hızlıca anlatıp geçmek istiyorum, çünkü örneklerle daha iyi pekişeceğine inanıyorum.
+
+Şimdi bu date nesnesinin özelliklerine bakalım.
+
+Öncelikle direkt bir sınıfı çağırmadan kullanabileceğimi nesnelere bakalım. Bunlardan biri de Date.parse. Bu fonksiyon, bir tarih dizesini alır ve bu dizeyi milisaniye cinsinden bir tarih ve saat değerine dönüştürür. Genellikle bir tarih dizesini içeren bir metin verisi üzerinde tarih işlemleri yaparken kullanılır.
+
+Rastgele bir tarih oluşturalım ve bunu Date.parse ile çevirip konsola yazdıralım.
+let tarihDizisi = "2024-01-02T12:30:45.678Z";
+let milisaniyeDegeri = Date.parse(tarihDizisi);
+
+veya direkt milisaniye değerini yazdıralım.
+
+let milisaniyeDegeri = Date.parse("2024-01-02");
+console.log(milisaniyeDegeri); // 1641081600000
+
+
+Ve şimdi Date.UTC fonksiyonuna bakalım. Bu fonksiyon belirtilen tarih ve saat bileşenlerini (yıl, ay, gün, saat, dakika, saniye ve milisaniye) kullanarak, 1970-01-01 00:00:00 UTC'den başlayarak geçen milisaniye cinsinden bir tarih değeri oluşturur. Bu metodun kullanımı, Date nesnesinin oluşturulması amacıyla genellikle new Date() yerine tercih edilir.
+
+Formatı ise bu şekildedir. Date.UTC(yıl, ay, gün, saat, dakika, saniye, milisaniye)
+
+Hmen kısa bir örnek verelim:
+let milisaniyeDegeri = Date.UTC(2024, 0, 2, 12, 30, 45, 678);
+Bu fonksiyon bize belirttiğimiz tarihin milisaniye değerini verecektir.
+console.log(milisaniyeDegeri); // 1641141045678
+
+
+
+Date.now() metodu, 1970-01-01 00:00:00 UTC'den itibaren geçen milisaniye cinsinden şu anki tarih ve saat bilgisini sağlar. Bu metot, bazen performans ölçümleri yaparken veya zaman damgaları oluştururken kullanılır.
+
+let simdikiZaman = Date.now();
+console.log(simdikiZaman); // Örneğin: 1641201723456
+
+
+
+
+getFullYear(): Yıl bilgisini alır.
+getMonth(): Ay bilgisini alır (0'dan başlayarak).
+getDate(): Ayın gün bilgisini alır.
+getHours(): Saat bilgisini alır.
+getMinutes(): Dakika bilgisini alır.
+getSeconds(): Saniye bilgisini alır.
+
+*/

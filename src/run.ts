@@ -1,15 +1,13 @@
-async function runner<T>(cb: () => T, ms: number, close = true) {
+export default async function runner<T>(cb: () => T, ms: number, close = true) {
   let timer: ReturnType<typeof setInterval>;
   if (!close) {
     console.log("Closed");
     return () => clearInterval(timer);
   }
-  timer = await setInterval(() => {
-    return cb();
-  }, ms);
+  timer = await setInterval(cb, ms);
 }
 
-runner(() => {
+/*runner(() => {
   console.log("Yes");
 }, 1000).catch(console.log);
 
@@ -28,4 +26,4 @@ function range(start: number, end: number, step: number = 1) {
   };
 }
 
-console.log(...range(0, 100, 5));
+console.log(...range(0, 100, 5));*/
